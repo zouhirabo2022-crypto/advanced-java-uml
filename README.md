@@ -130,4 +130,4 @@ Java Avancer/
 
 ---
 
-**Auteur :** Khalid Aimed — ENSET
+**Auteur :** Khaimed — ENSET
