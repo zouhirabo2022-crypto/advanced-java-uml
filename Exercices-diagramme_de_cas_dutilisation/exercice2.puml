@@ -1,0 +1,44 @@
+@startuml Exercice2_Agence_Voyage
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor LightGreen
+  BorderColor DarkGreen
+  ArrowColor DarkGreen
+  ActorBorderColor DarkGreen
+  ActorFontSize 14
+}
+
+actor "Client" as Client
+actor "Agent de Voyage" as Agent
+actor "Administrateur" as Admin
+
+rectangle "Système de Gestion des Voyages" {
+  usecase "Consulter les offres\nde voyages" as UC1
+  usecase "Effectuer une\nréservation" as UC2
+  usecase "Consulter l'historique\ndes voyages" as UC3
+
+  usecase "Ajouter une offre\nde voyage" as UC4
+  usecase "Consulter les\nréservations clients" as UC5
+  usecase "Modifier les détails\nd'un voyage" as UC6
+
+  usecase "Gérer les comptes\nclients" as UC7
+  usecase "Gérer les comptes\nagents" as UC8
+}
+
+Client --> UC1
+Client --> UC2
+Client --> UC3
+
+Agent --> UC4
+Agent --> UC5
+Agent --> UC6
+
+Admin --> UC7
+Admin --> UC8
+Admin --> UC1
+Admin --> UC2
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+@enduml

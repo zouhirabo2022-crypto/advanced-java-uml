@@ -1,0 +1,71 @@
+@startuml Exercice3_Site_Ecommerce
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor LightYellow
+  BorderColor DarkOrange
+  ArrowColor DarkOrange
+  ActorBorderColor DarkOrange
+  ActorFontSize 14
+}
+
+actor "Visiteur" as Visiteur
+actor "Client" as Client
+actor "Administrateur" as Admin
+
+Visiteur <|-- Client
+
+rectangle "Système E-Commerce" {
+
+  ' Cas d'utilisation accessibles aux visiteurs
+  usecase "Parcourir les produits" as UC1
+  usecase "Visualiser les catégories\nde produits" as UC2
+  usecase "Visualiser les détails\nd'un article" as UC3
+
+  ' Cas d'utilisation spécifiques aux clients
+  usecase "Gérer le panier" as UC4
+  usecase "Ajouter un article\nau panier" as UC4a
+  usecase "Supprimer un article\ndu panier" as UC4b
+  usecase "Ajuster les quantités" as UC4c
+  usecase "Passer une commande" as UC5
+  usecase "Sélectionner l'adresse\nde livraison" as UC5a
+  usecase "Choisir le mode\nde livraison" as UC5b
+  usecase "Effectuer le paiement\nen ligne" as UC5c
+  usecase "Recevoir la confirmation\nde commande" as UC5d
+  usecase "Gérer son compte" as UC6
+  usecase "Consulter l'historique\ndes commandes" as UC7
+
+  ' Cas d'utilisation administrateurs
+  usecase "Gérer les produits" as UC8
+  usecase "Gérer les commandes" as UC9
+  usecase "Gérer les utilisateurs" as UC10
+}
+
+' Associations Visiteur
+Visiteur --> UC1
+Visiteur --> UC2
+Visiteur --> UC3
+
+' Associations Client
+Client --> UC4
+Client --> UC5
+Client --> UC6
+Client --> UC7
+
+' Associations Administrateur
+Admin --> UC8
+Admin --> UC9
+Admin --> UC10
+
+' Relations include pour "Gérer le panier"
+UC4 ..> UC4a : <<include>>
+UC4 ..> UC4b : <<include>>
+UC4 ..> UC4c : <<include>>
+
+' Relations include pour "Passer une commande"
+UC5 ..> UC4    : <<include>>
+UC5 ..> UC5a   : <<include>>
+UC5 ..> UC5b   : <<include>>
+UC5 ..> UC5c   : <<include>>
+UC5 ..> UC5d   : <<include>>
+@enduml

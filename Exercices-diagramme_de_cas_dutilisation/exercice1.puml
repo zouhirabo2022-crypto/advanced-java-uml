@@ -1,0 +1,44 @@
+@startuml Exercice1_Etablissement_Scolaire
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+  ArrowColor DarkBlue
+  ActorBorderColor DarkBlue
+  ActorFontSize 14
+}
+
+actor "Étudiant" as Etudiant
+actor "Enseignant" as Enseignant
+actor "Enseignant\nResponsable" as EnseignantResp
+
+Enseignant <|-- EnseignantResp
+
+rectangle "Système de Réservation Scolaire" {
+  usecase "Consulter le planning\ndes salles" as UC1
+  usecase "Réserver une salle\nou du matériel" as UC2
+  usecase "Vérifier disponibilité" as UC3
+  usecase "Consulter le récapitulatif\nhoraire par enseignant" as UC4
+  usecase "Éditer le récapitulatif\nhoraire de la formation" as UC5
+}
+
+Etudiant --> UC1
+Enseignant --> UC1
+Enseignant --> UC2
+Enseignant --> UC4
+EnseignantResp --> UC5
+
+UC2 ..> UC3 : <<include>>
+UC4 ..> UC1 : <<include>>
+
+note right of UC2
+  Réservation sous réserve
+  de disponibilité
+end note
+
+note right of UC4
+  Calculé à partir du
+  planning des salles
+end note
+@enduml
