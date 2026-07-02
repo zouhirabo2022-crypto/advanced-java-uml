@@ -1,5 +1,6 @@
 # TP3 — Gestion des Exceptions en Java
 
+
 ## Objectif
 
 Maîtriser la création et la gestion d'exceptions personnalisées en Java : exceptions vérifiées (`checked`), héritage de `Exception`, blocs `try/catch/throws`, et conception de classes robustes.
